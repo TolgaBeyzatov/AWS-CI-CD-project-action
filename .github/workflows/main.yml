@@ -34,7 +34,8 @@ jobs:
    
     # Run sonar-scanner
       - name: SonarQube Scan
-        run: sonar-scanner           
+        run: sonar-scanner
+           -Dsonar.host.url=${{ secrets.SONAR_URL }}
            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
            -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
@@ -53,7 +54,7 @@ jobs:
           pollingTimeoutSec: 600
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        #  SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
+          SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
 
   BUILD_AND_PUBLISH:
     needs: Testing
