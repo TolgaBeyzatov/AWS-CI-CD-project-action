@@ -46,14 +46,33 @@ jobs:
            -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
 
       # Check the Quality Gate status.
-      - name: SonarQube Quality Gate check
-        id: sonarqube-quality-gate-check
-        uses: sonarsource/sonarqube-quality-gate-action@master
-        # Force to fail step after specific time.
-        timeout-minutes: 5
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
+      - name: SonarQube Quality Gate Check
+# Warning: changing name would change URL in the marketplace
+        description: >
+          Check if a project / analysis passed the Quality Gate check
+        branding:
+          icon: check
+          color: green
+        runs:
+          using: "composite"
+          steps:
+            - id: quality-gate-check
+              run: $GITHUB_ACTION_PATH/script/check-quality-gate.sh "${{ inputs.scanMetadataReportFile  }}" "${{ inputs.pollingTimeoutSec }}"
+              shell: bash
+        inputs:
+          scanMetadataReportFile:
+            description: Location of the scanner metadata report file
+            required: false
+            default: .scannerwork/report-task.txt
+          pollingTimeoutSec:
+            description: "The maximum time (in seconds) to poll for SonarQube's Quality Gate status. Default: 300."
+            required: false
+            default: "300"
+        outputs:
+          quality-gate-status:
+            description: >
+              The resulting Quality Gate Status value of PASSED, WARN or FAILED
+            value: ${{ steps.quality-gate-check.outputs.quality-gate-status }}  
 
   BUILD_AND_PUBLISH:
     needs: Testing
