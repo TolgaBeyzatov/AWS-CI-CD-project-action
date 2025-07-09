@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:716657688884:task-definition/vproapp-act-tdef:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:127214174680:task-definition/vproapp-act-tdef:1",
     "containerDefinitions": [
         {
             "name": "vproapp",
-            "image": "716657688884.dkr.ecr.us-east-1.amazonaws.com/actapp",
+            "image": "127214174680.dkr.ecr.us-east-1.amazonaws.com/actapp",
             "cpu": 0,
             "portMappings": [
                 {
@@ -33,7 +33,7 @@
         }
     ],
     "family": "vproapp-act-tdef",
-    "executionRoleArn": "arn:aws:iam::716657688884:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::127214174680:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
     "volumes": [],
@@ -79,7 +79,7 @@
         "operatingSystemFamily": "LINUX"
     },
     "registeredAt": "2023-11-10T18:02:04.388Z",
-    "registeredBy": "arn:aws:iam::716657688884:root",
+    "registeredBy": "arn:aws:iam::127214174680:root",
     "tags": [
         {
             "key": "Name",
