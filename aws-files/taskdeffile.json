@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-2:716657688884:task-definition/vproapp-act-tdef:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:716657688884:task-definition/vproapp-act-tdef:1",
     "containerDefinitions": [
         {
             "name": "vproapp",
-            "image": "716657688884.dkr.ecr.us-east-2.amazonaws.com/actapp",
+            "image": "716657688884.dkr.ecr.us-east-1.amazonaws.com/actapp",
             "cpu": 0,
             "portMappings": [
                 {
@@ -25,7 +25,7 @@
                 "options": {
                     "awslogs-create-group": "true",
                     "awslogs-group": "/ecs/vproapp-act-tdef",
-                    "awslogs-region": "us-east-2",
+                    "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
