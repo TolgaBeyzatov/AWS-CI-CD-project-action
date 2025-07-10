@@ -67,9 +67,9 @@ jobs:
         id: parameter
         uses: poad/get-aws-ssm-parameter@v3.0.0
         with: 
-        parameter-name: RDSEndpoint
-        aws-region: us-east-1
-        decryption: false      
+          parameter-name: RDSEndpoint
+          aws-region: us-east-1
+          decryption: false      
       
       - name: Update application.properties file
         run: |
