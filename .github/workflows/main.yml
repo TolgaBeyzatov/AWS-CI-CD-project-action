@@ -117,6 +117,7 @@ jobs:
           aws-region: ${{ env.AWS_REGION }}
           role-to-assume: arn:aws:iam::127214174680:role/vprofile-app-task
           role-session-name: GitHub_to_AWS_Session
+          role-duration-seconds: 1200
 
       - name: Fill in the new image ID in the Amazon ECS task definition
         id: task-def
