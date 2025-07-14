@@ -83,8 +83,8 @@
     "registeredBy": "arn:aws:iam::127214174680:root",
     "tags": [
         {
-            "Environment": "Name",
-            "Project": "vproapp-act-tdef"
+            "key": "Name",
+            "value": "vproapp-act-tdef"
         }
     ]
 }
