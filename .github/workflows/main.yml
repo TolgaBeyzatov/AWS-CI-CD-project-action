@@ -3,7 +3,7 @@ on: [push, workflow_dispatch]
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: actapp           
-  ECS_SERVICE: vproapp-act-svc                
+  ECS_SERVICE: vproapp_ecs_service                
   ECS_CLUSTER: ecs-vprofile              
   ECS_TASK_DEFINITION: aws-files/taskdeffile.json 
   CONTAINER_NAME: vproapp 

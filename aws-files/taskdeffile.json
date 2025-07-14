@@ -32,7 +32,7 @@
             }
         }
     ],
-    "family": "vproapp-act-tdef",
+    "family": "vproapptd",
     "executionRoleArn": "arn:aws:iam::127214174680:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "revision": 1,
