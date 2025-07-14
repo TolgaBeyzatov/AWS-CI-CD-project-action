@@ -115,7 +115,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ env.AWS_REGION }}
-          role-to-assume: arn:aws:iam::127214174680:role/vprofile-app_task
+          role-to-assume: arn:aws:iam::127214174680:role/vprofile-app-task
           role-session-name: GitHub_to_AWS_Session
 
       - name: Fill in the new image ID in the Amazon ECS task definition
