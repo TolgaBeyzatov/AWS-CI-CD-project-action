@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:127214174680:task-definition/vproapp-act-tdef:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:127214174680:task-definition/vproapp-tdef:1",
     "containerDefinitions": [
         {
             "name": "vproapp",
@@ -32,7 +32,7 @@
             }
         }
     ],
-    "family": "vproapptd",
+    "family": "vproapp-tdef",
     "executionRoleArn": "arn:aws:iam::127214174680:role/ecsTaskExecutionRole",
     
     "networkMode": "awsvpc",
@@ -83,8 +83,8 @@
     "registeredBy": "arn:aws:iam::127214174680:root",
     "tags": [
         {
-            "key": "Name",
-            "value": "vproapp-act-tdef"
+            "Environment": "Name",
+            "Project": "vproapp-act-tdef"
         }
     ]
 }
