@@ -83,7 +83,7 @@ jobs:
           decryption: false     
 
       - name: 'Get value from Parameter Store' 
-        id: parameterrmq
+        id: parameter
         uses: poad/get-aws-ssm-parameter@v3.0.0
         with: 
           parameter-name: RabbitMQEndpoint
@@ -91,7 +91,7 @@ jobs:
           decryption: false     
         
       - name: 'Get value from Parameter Store' 
-        id: parametermq
+        id: parameter
         uses: poad/get-aws-ssm-parameter@v3.0.0
         with: 
           parameter-name: MemcachedEndpoint
