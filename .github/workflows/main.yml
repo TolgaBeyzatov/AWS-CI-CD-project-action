@@ -97,12 +97,6 @@ jobs:
           parameter-name: MemcachedEndpoint
           aws-region: us-east-1
           decryption: false 
-
-      - run: echo "OUTPUTS"
-        shell: bash 
-        env:
-          OUTPUTS: ${{ toJSON(steps.RDSEndpoint.outputs.value) }}
-
       
       - name: Update application.properties file
         run: |
