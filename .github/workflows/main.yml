@@ -80,13 +80,33 @@ jobs:
         with: 
           parameter-name: RDSEndpoint
           aws-region: us-east-1
-          decryption: false      
+          decryption: false     
+
+      - name: 'Get value from Parameter Store' 
+        id: parameterrmq
+        uses: poad/get-aws-ssm-parameter@v3.0.0
+        with: 
+          parameter-name: RabbitMQEndpoint
+          aws-region: us-east-1
+          decryption: false     
+        
+      - name: 'Get value from Parameter Store' 
+        id: parametermq
+        uses: poad/get-aws-ssm-parameter@v3.0.0
+        with: 
+          parameter-name: MemcachedEndpoint
+          aws-region: us-east-1
+          decryption: false 
+
       
       - name: Update application.properties file
         run: |
           sed -i "s/^jdbc.username.*$/jdbc.username\=${{ secrets.RDS_USER }}/" src/main/resources/application.properties
           sed -i "s/^jdbc.password.*$/jdbc.password\=${{ secrets.RDS_PASS }}/" src/main/resources/application.properties
           sed -i "s/db01/${{ steps.RDSEndpoint.outputs.value }}/" src/main/resources/application.properties
+          sed -i "s/rmq01/${{ steps.RabbitMQEndpoint.outputs.value }}/" src/main/resources/application.properties
+          sed -i "s/mc01/${{ steps.MemcachedEndpoint.outputs.value }}/" src/main/resources/application.properties
+
 
       - name: Build & Upload image to ECR
         uses: appleboy/docker-ecr-action@master
