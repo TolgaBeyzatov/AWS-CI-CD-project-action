@@ -8,7 +8,7 @@
             "logConfiguration": { 
               "logDriver": "awslogs",
               "options": { 
-                "awslogs-create-group": true,
+                "awslogs-create-group": "true",
                 "awslogs-group" : "/ecs/vprofile-api",
                 "awslogs-region": "us-east-1",
                 "awslogs-stream-prefix": "ecs"
