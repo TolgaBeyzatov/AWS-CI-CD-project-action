@@ -29,7 +29,7 @@
                                 <img alt="Brand" src="${contextPath}/resources/Images/user/logo.png" width="30px" height="30px">
                             </a>
                             <a class="navbar-brand" href="#">CV Project</a>
-                            <i class="brand_network"><small><small>hkh* Network</small></small></i>
+                            <i class="brand_network"><small><small>uses Apache Tomcat</small></small></i>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
@@ -100,8 +100,8 @@
                         </div>
                         <div class="media-body">
                             <hr>
-                            <h3><strong>Bio</strong></h3>
-                            <p>DevOps For Product Management and Strategy of Application Delivery at HKH Infotech. Responsible of providing customers with counsel on their DevOps strategies to help them deliver higher quality software and services to market faster.</p>
+                            <h3><strong>Description</strong></h3>
+                            <p>I am a DevOps enthusiast, whose project you are looking at the moment. Overall, this project represents my ability to build an Apache Tomcat application using CI/CD tools such as Github Actions workflows for both automating the Infrastructure as code using Terraform, integrated in a separate Git repository with two branches for dev and prod. The other Workflow is for the application itself, it builds and tests the artifacts before they are deployed, the second job is for Build and Push and the last job is for deploying the new task definition in the ECS Cluster.</p>
                             <hr>
                             <h3><strong>Location</strong></h3>
                             <p>Bulgaria</p>
@@ -138,13 +138,13 @@
                     </span>
                     <br><br>
                     <i class="fa fa-tags" aria-hidden="true"></i> <a href="#" class="tag">#DevOps</a> <a href="#" class="tag"> #Continuous Integration</a> <a href="#" class="tag"> #Continuous Delivery </a><a href="#" class="tag"> #Automation</a>
-                     <c:if test="${pageContext.request.userPrincipal.name =='admin_vp'}">
+                     <c:if test="${pageContext.request.userPrincipal.name =='Tolga'}">
 					     <a href="${contextPath}/users" class="btn btn-success" >All Users</a>
 					 </c:if>
-					  <c:if test="${pageContext.request.userPrincipal.name =='admin_vp'}">
+					  <c:if test="${pageContext.request.userPrincipal.name =='Tolga'}">
 					     <a href="${contextPath}/user/rabbit" class="btn btn-success" >RabbitMq</a>
 					 </c:if>
-					 <c:if test="${pageContext.request.userPrincipal.name =='admin_vp'}">
+					 <c:if test="${pageContext.request.userPrincipal.name =='Tolga'}">
 					     <a href="${contextPath}/user/elasticsearch" class="btn btn-success" >Elasticsearch</a>
 					 </c:if>
                     <br><br><hr>
@@ -254,7 +254,7 @@
                                         <img class="media-object img-circle" src="${contextPath}/resources/Images/user/user2.png" width="50px" height="50px" style="margin-right:8px; margin-top:-5px;">
                                     </a>
                                 </div>
-                                <h4><a href="#" style="text-decoration:none;"><strong>Abrar nirban</strong></a> <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> about 10 hours ago</i></a></small></small></h4>
+                                <h4><a href="#" style="text-decoration:none;"><strong>Keanu Reeves the programmer</strong></a> <small><small><a href="#" style="text-decoration:none; color:grey;"><i><i class="fa fa-clock-o" aria-hidden="true"></i> about 10 hours ago</i></a></small></small></h4>
                                 <hr>
                                 <div class="post-content">
                                      <p>What are DevOps skills?</p>
