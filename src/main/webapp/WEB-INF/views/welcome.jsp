@@ -101,7 +101,7 @@
                         <div class="media-body">
                             <hr>
                             <h3><strong>Description</strong></h3>
-                            <p>DevOps enthusiastand this is my project. Overall, this project represents my ability to build an application using an open-source web server Apache Tomcat and CI/CD tools such as Github Actions workflows for both automating the Infrastructure as code with Terraform, integrated in a separate Git repository with two branches for dev and prod. The other Workflow is for the application itself consists three jobs, the first job builds and tests the artifacts before they are deployed, the second job is for Build and Push and the last job is for deploying the new task definition in the ECS Cluster.</p>
+                            <p>DevOps enthusiast. This is my project. Overall, this project represents my ability to build an application using an open-source web server Apache Tomcat and CI/CD tools such as Github Actions workflows for both automating the Infrastructure as code with Terraform, integrated in a separate Git repository with two branches for dev and prod. The other Workflow is for the application itself, it consists of three jobs, the first job builds and tests the artifacts before they are deployed, the second job is for Build and Push the image in ECR and the last job is for deploying the new task definition in the ECS Cluster.</p>
                             <hr>
                             <h3><strong>Location</strong></h3>
                             <p>Bulgaria</p>
