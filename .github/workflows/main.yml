@@ -1,0 +1,158 @@
+name: Cvproject Actions # Project Name
+on: [push, workflow_dispatch]
+env:
+  AWS_REGION: us-east-1
+  ECR_REPOSITORY: actapp           
+  ECS_SERVICE: vproapp_ecs_service                
+  ECS_CLUSTER: ecs-vprofile              
+  ECS_TASK_DEFINITION: aws-files/taskdeffile.json 
+  CONTAINER_NAME: vproapp 
+
+permissions:
+  id-token: write  # This is required for requesting the JWT
+  contents: read   # This is required for actions/checkout
+
+jobs:
+  Testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Maven test
+        run: mvn test
+
+      - name: Checkstyle
+        run: mvn checkstyle:checkstyle
+
+      # Setup java 11 to be default (sonar-scanner requirement as of 5.x)
+      - name: Set Java 21
+        uses: actions/setup-java@v3
+        with:
+         distribution: 'temurin' # See 'Supported distributions' for available options
+         java-version: '21'
+
+    # Setup sonar-scanner
+      - name: Setup SonarQube
+        uses: warchant/setup-sonar-scanner@v7
+   
+    # Run sonar-scanner
+      - name: SonarQube Scan
+        run: sonar-scanner
+           -Dsonar.host.url=${{ secrets.SONAR_URL }}
+           -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+           -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
+           -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
+           -Dsonar.sources=src/
+           -Dsonar.junit.reportsPath=target/surefire-reports/ 
+           -Dsonar.jacoco.reportsPath=target/jacoco.exec 
+           -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml
+           -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
+
+    # Check the Quality Gate status.
+      - name: SonarQube Quality Gate check
+        id: sonarqube-quality-gate-check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time.
+        with:
+          pollingTimeoutSec: 600
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
+
+  BUILD_AND_PUBLISH:
+    needs: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+
+      - name: 'Get value from Parameter Store'
+        id: parameter
+        uses: poad/get-aws-ssm-parameter@v3.0.0
+        with: 
+          parameter-name: RDSEndpoint
+          aws-region: us-east-1
+          decryption: false     
+
+      - name: 'Get value from Parameter Store' 
+        id: parameterRmq
+        uses: poad/get-aws-ssm-parameter@v3.0.0
+        with: 
+          parameter-name: RabbitMQEndpoint
+          aws-region: us-east-1
+          decryption: false     
+        
+      - name: 'Get value from Parameter Store' 
+        id: parameterMq
+        uses: poad/get-aws-ssm-parameter@v3.0.0
+        with: 
+          parameter-name: MemcachedEndpoint
+          aws-region: us-east-1
+          decryption: false 
+      
+      - name: Update application.properties file
+        run: |
+          sed -i "s/^jdbc.username.*$/jdbc.username\=${{ secrets.RDS_USER }}/" src/main/resources/application.properties
+          sed -i "s/^jdbc.password.*$/jdbc.password\=${{ secrets.RDS_PASS }}/" src/main/resources/application.properties
+          sed -i "s/db01:3306/${{ steps.parameter.outputs.value }}/" src/main/resources/application.properties
+          sed -i "s/rmq01/${{ steps.parameterRMq.outputs.value }}/" src/main/resources/application.properties
+          sed -i "s/mc01/${{ steps.parameterMq.outputs.value }}/" src/main/resources/application.properties
+        
+
+      - name: Build & Upload image to ECR
+        uses: appleboy/docker-ecr-action@master
+        with:
+         access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         registry: ${{ secrets.REGISTRY }}
+         repo: actapp
+         region: ${{ env.AWS_REGION }}
+         tags: latest,${{ github.run_number }}
+         daemon_off: false
+         dockerfile: ./Dockerfile
+         context: ./
+
+  Deploy:
+    needs: BUILD_AND_PUBLISH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code checkout
+        uses: actions/checkout@v4
+        
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+          # role-to-assume: arn:aws:iam::127214174680:role/vprofile-app-task
+          # role-session-name: GitHub_to_AWS_Session
+          # role-duration-seconds: 1200
+
+      - name: Fill in the new image ID in the Amazon ECS task definition
+        id: task-def
+        uses: aws-actions/amazon-ecs-render-task-definition@v1
+        with:
+          task-definition: ${{ env.ECS_TASK_DEFINITION }}
+          container-name: ${{ env.CONTAINER_NAME }}
+          image: ${{ secrets.REGISTRY }}/${{ env.ECR_REPOSITORY }}:${{ github.run_number }}
+
+      - name: Deploy Amazon ECS task definition
+        uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+        with:
+          task-definition: ${{ steps.task-def.outputs.task-definition }}
+          service: ${{ env.ECS_SERVICE }}
+          cluster: ${{ env.ECS_CLUSTER }}
+          wait-for-service-stability: true  
+
+      
+
+      
