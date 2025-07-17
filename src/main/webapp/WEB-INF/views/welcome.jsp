@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Welcome</title>
+    <title>Welcome to my test project</title>
     <link rel="stylesheet" href="${contextPath}/resources/css/bootstrap.min.css">
     <link href="${contextPath}/resources/css/profile.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -28,7 +28,7 @@
                             <a class="navbar-brand" href="#" style="margin-right:-8px; margin-top:-5px;">
                                 <img alt="Brand" src="${contextPath}/resources/Images/user/logo.png" width="30px" height="30px">
                             </a>
-                            <a class="navbar-brand" href="#">HKH Infotech</a>
+                            <a class="navbar-brand" href="#">CV Project</a>
                             <i class="brand_network"><small><small>hkh* Network</small></small></i>
                         </div>
                         <div class="navbar-collapse collapse">
@@ -104,13 +104,13 @@
                             <p>DevOps For Product Management and Strategy of Application Delivery at HKH Infotech. Responsible of providing customers with counsel on their DevOps strategies to help them deliver higher quality software and services to market faster.</p>
                             <hr>
                             <h3><strong>Location</strong></h3>
-                            <p>Earth</p>
+                            <p>Bulgaria</p>
                             <hr>
                             <h3><strong>Gender</strong></h3>
-                            <p>Unknown</p>
+                            <p>Male</p>
                             <hr>
                             <h3><strong>Birthday</strong></h3>
-                            <p>January 01 1901</p>
+                            <p>January 01 1994</p>
                         </div>
                     </div>
                 </div>
