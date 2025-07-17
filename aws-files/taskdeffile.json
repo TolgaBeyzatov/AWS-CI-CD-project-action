@@ -5,6 +5,13 @@
             "name": "vproapp",
             "image": "127214174680.dkr.ecr.us-east-1.amazonaws.com/actapp:latest",
             "cpu": 0,
+            "logConfiguration": { 
+              "logDriver": "awslogs",
+              "options": { 
+                "awslogs-group" : "/ecs/vroapp-act-tdefp",
+                "awslogs-region": "us-east-1",
+                "awslogs-stream-prefix": "ecs"
+            },
             "portMappings": [
                 {
                     "containerPort": 8080,
@@ -13,12 +20,14 @@
                     "appProtocol": "http"
                 }
             ],
+            
             "essential": true,
             "environment": [],
             "mountPoints": [],
             "volumesFrom": [],
             "systemControls": []
         }
+
     ],
     "taskRoleArn": "arn:aws:iam::127214174680:role/vprofile-app-task",
     "executionRoleArn": "arn:aws:iam::127214174680:role/vprofile-task-execution-role",
