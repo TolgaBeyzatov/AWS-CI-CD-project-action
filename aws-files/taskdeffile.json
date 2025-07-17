@@ -15,6 +15,7 @@
             },
             "portMappings": [
                 {
+                    "awslogs-create-group": true,
                     "containerPort": 8080,
                     "hostPort": 8080,
                     "protocol": "tcp",
