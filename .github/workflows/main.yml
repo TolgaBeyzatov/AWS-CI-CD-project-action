@@ -49,16 +49,16 @@ jobs:
            -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml
            -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
 
-      # Check the Quality Gate status.
-      # - name: SonarQube Quality Gate check
-      #   id: sonarqube-quality-gate-check
-      #   uses: sonarsource/sonarqube-quality-gate-action@master
-      #   # Force to fail step after specific time.
-      #   with:
-      #     pollingTimeoutSec: 600
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   # SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
+    # Check the Quality Gate status.
+      - name: SonarQube Quality Gate check
+        id: sonarqube-quality-gate-check
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time.
+        with:
+          pollingTimeoutSec: 600
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
 
   BUILD_AND_PUBLISH:
     needs: Testing
@@ -103,7 +103,7 @@ jobs:
           sed -i "s/^jdbc.username.*$/jdbc.username\=${{ secrets.RDS_USER }}/" src/main/resources/application.properties
           sed -i "s/^jdbc.password.*$/jdbc.password\=${{ secrets.RDS_PASS }}/" src/main/resources/application.properties
           sed -i "s/db01:3306/${{ steps.parameter.outputs.value }}/" src/main/resources/application.properties
-          sed -i "s/rmq01/${{ steps.parameterMq.outputs.value }}/" src/main/resources/application.properties
+          sed -i "s/rmq01/${{ steps.parameterRMq.outputs.value }}/" src/main/resources/application.properties
           sed -i "s/mc01/${{ steps.parameterMq.outputs.value }}/" src/main/resources/application.properties
         
 
@@ -127,7 +127,6 @@ jobs:
       - name: Code checkout
         uses: actions/checkout@v4
         
-
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
