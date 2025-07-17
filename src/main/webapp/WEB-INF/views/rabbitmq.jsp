@@ -9,6 +9,6 @@
 <body>
 	<h1>Rabbitmq initiated</h1>
 	<h3>Generated 2 Connections</h3>
-	<h3>6 Chanels 1 Exchage and 2 Que</h3>
+	<h3>6 Channels 1 Exchange and 2 Queues</h3>
 </body>
 </html>
