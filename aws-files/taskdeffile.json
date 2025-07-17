@@ -27,7 +27,7 @@
             "volumesFrom": [],
             "systemControls": []
         }
-
+    }
     ],
     "taskRoleArn": "arn:aws:iam::127214174680:role/vprofile-app-task",
     "executionRoleArn": "arn:aws:iam::127214174680:role/vprofile-task-execution-role",
