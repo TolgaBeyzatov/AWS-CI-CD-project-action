@@ -8,14 +8,13 @@
             "logConfiguration": { 
               "logDriver": "awslogs",
               "options": { 
-                "awslogs-group" : "/ecs/vroapp-act-tdefp",
+                "awslogs-group" : "/ecs/vprofile-api",
                 "awslogs-region": "us-east-1",
                 "awslogs-stream-prefix": "ecs"
         }
             },
             "portMappings": [
                 {
-                    "awslogs-create-group": true,
                     "containerPort": 8080,
                     "hostPort": 8080,
                     "protocol": "tcp",
