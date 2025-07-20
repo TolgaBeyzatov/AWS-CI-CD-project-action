@@ -21,8 +21,8 @@
                                 <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span><span
                                     class="icon-bar"></span><span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="${contextPath}/index">VISUAL PATH</a>
-                            <i class="brand_network"><small><small>VProfile</small></small></i>
+                            <a class="navbar-brand" href="${contextPath}/index">CV Project</a>
+                            <i class="brand_network"><small><small>used technologies</small></small></i>
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
@@ -50,13 +50,13 @@
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
   <img style='opacity:.8' class="w3-image" src="${contextPath}/resources/Images/header.jpg" alt="Architecture" width="1500" height="800">
   <div class="w3-display-middle w3-margin-top w3-center">
-    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>DevOps</b></h1>
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>DevOps CI/CD</b></h1>
   </div>
 </header>
 <div>
 <blockquote><p>
-     <h2 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">Keep Learning ..</h2>
-     <h3 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">Learning is a Treasure that will follow it's Owner Everywhere..</h3> 
+     <h2 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">This application is created using</h2>
+     <h3 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">Part of the project technologies and services are described in About section. Thank you for your interest! </h3> 
 </blockquote>
 <!-- Page content -->
 <div class="w3-content w3-padding" style="max-width:1564px">
@@ -116,11 +116,11 @@
   <div class="container w3-padding-32" id="about">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center">ABOUT</h3>
     <div class="w3-content" style="max-width:700px">
-	    <p style="text-align:justify;">VisualPath is an IT Educational Institute.Established in 2001,and Institute offers world class quality of education and wide range of courses.VisualPath Institute has a dedicated placement team to help students get job placement in various IT job roles with major companies.
+	    <p style="text-align:justify;">Github for version control, Github Actions for automating the pipeline for IAC and Application building with Maven, testing with Sonar Cloud Scanner, docker images are deployed to ECR, containers with task definition to ECS. The Infrastructure is created with Terraform. The following services are implemented Amazon RDS for database, RabbitMq as a message broker, Elastic Memcached as cache, EC2 instance as bastion host for transferring the database schema using bash script, Nat Gateway, API Gateway and many other AWS services.
 	    </p>
-	    <p><strong>Address:</strong>  Flat no: 205, 2nd Floor,NILGIRI Block,Aditya Encalve,Ameerpet, Hyderabad-16</p> 
-	    <p><strong>Ph No: </strong>  +91-9704455959,9618245689</p>
-		<p><strong>E-Mail ID :</strong>  visualpath999@gmail.com</p>
+	    <p><strong>Address:</strong>  Varna, Bulgaria</p> 
+	    <p><strong>Ph No: </strong>  +359893495400</p>
+		<p><strong>E-Mail ID :</strong>  tolga.beyzatov@gmail.com</p>
   	</div>
    </div>
   
@@ -145,7 +145,7 @@
 
 <!-- Footer -->
 <footer class="w3-center  w3-padding-16" style="background-color:#1C3B47 ">
-  <p style="color:#FFFFFF ">Copyright @2017 <a href="#"  target="_blank" class="w3-hover-text-green"> visualpathit.com</a></p>
+  <p style="color:#FFFFFF ">Copyright @2025 <a href="#"  target="_blank" class="w3-hover-text-green"> Tolga Beyzatov</a></p>
 </footer>
 
 
