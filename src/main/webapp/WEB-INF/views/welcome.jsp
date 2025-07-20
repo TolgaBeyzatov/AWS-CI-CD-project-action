@@ -403,7 +403,7 @@
                                             <img class="media-object img-circle" src="${contextPath}/resources/Images/user/user2.png" width="35px" height="35px" style="margin-right:8px; margin-top:-5px;">
                                         </a>
                                     </div>
-                                    <h4><a href="#" style="text-decoration:none;"><strong>Kiran Kumar</strong></a></h4>
+                                    <h4><a href="#" style="text-decoration:none;"><strong> John Atanasoff </strong></a></h4>
                                     <hr>
                                     <div class="post-content">
                                         <p>DevOps has significant importance to any company delivering software or technical services today.Defining DevOps is trickier than you would think, primarily because of its wide usage. It is essentially shorthand, and nothing more than that, for a lean approach to software delivery.</p>
@@ -421,7 +421,7 @@
                                             <img class="media-object img-circle" src="${contextPath}/resources/Images/user/user3.png" width="35px" height="35px" style="margin-right:8px; margin-top:-5px;">
                                         </a>
                                     </div>
-                                    <h4><a href="#" style="text-decoration:none;"><strong>Mi Chleen</strong></a></h4>
+                                    <h4><a href="#" style="text-decoration:none;"><strong>Dr. Mustafa</strong></a></h4>
                                     <hr>
                                     <div class="post-content">
                                         <p>The secret to DevOps maturity is not technology or process, but people. It takes engaged leadership and all for one cooperation to achieve the kind of results that lead companies to superior IT performance. High-performing DevOps teams can recover 168 times faster from failures and have 60 times fewer failures due to changes, according to the 2015 State of DevOps Report by Puppet Labs. High-performing teams also release code at significantly increasing velocity as their teams grow in size, approaching three deploys per day per developer, for teams of around 1000 developers.</p>

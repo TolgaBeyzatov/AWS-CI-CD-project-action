@@ -50,12 +50,12 @@
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
   <img style='opacity:.8' class="w3-image" src="${contextPath}/resources/Images/header.jpg" alt="Architecture" width="1500" height="800">
   <div class="w3-display-middle w3-margin-top w3-center">
-    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>DevOps CI/CD</b></h1>
+    <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>DevOps CI/CD Project</b></h1>
   </div>
 </header>
 <div>
 <blockquote><p>
-     <h2 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">This application is created using</h2>
+     <h2 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">The application is presented to you using Apache Tomcat as a web server and servlet container. </h2>
      <h3 align="center" style="font-family: Verdana,sans-serif;color:#1C3B47;">Part of the project technologies and services are described in About section. Thank you for your interest! </h3> 
 </blockquote>
 <!-- Page content -->
@@ -116,7 +116,7 @@
   <div class="container w3-padding-32" id="about">
     <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16" align="center">ABOUT</h3>
     <div class="w3-content" style="max-width:700px">
-	    <p style="text-align:justify;">Github for version control, Github Actions for automating the pipeline for IAC and Application building with Maven, testing with Sonar Cloud Scanner, docker images are deployed to ECR, containers with task definition to ECS. The Infrastructure is created with Terraform. The following services are implemented Amazon RDS for database, RabbitMq as a message broker, Elastic Memcached as cache, EC2 instance as bastion host for transferring the database schema using bash script, Nat Gateway, API Gateway and many other AWS services.
+	    <p style="text-align:justify;">The current project is developed as training for my skills gained with the presented in my CV certifications. It is implemented with Github for version control, Github Actions for automating the pipeline for IAC and Application building with Maven, testing with Sonar Cloud Scanner, docker images are deployed to ECR, containers with task definition to ECS. The Infrastructure is created with Terraform. The following services are implemented Amazon RDS for database, RabbitMq as a message broker, Elastic Memcached as cache, EC2 instance as bastion host for transferring the database schema using bash script, Nat Gateway, API Gateway and many other AWS services.
 	    </p>
 	    <p><strong>Address:</strong>  Varna, Bulgaria</p> 
 	    <p><strong>Ph No: </strong>  +359893495400</p>
