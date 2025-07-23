@@ -1,7 +1,7 @@
 package com.amazon.elasticache;
-import java.io.IOException;
 package com.visualpathit.account.utils;
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.concurrent.Future;
