@@ -23,8 +23,7 @@
             ],
             
             "essential": true,
-            "environment": [],
-            "secrets": [
+            "environment": [
                 {
                     "name": "MemcachedEndpoint",
                     "valueFrom": "arn:aws:ssm:us-east-1:127214174680:parameter/MemcachedEndpoint"
