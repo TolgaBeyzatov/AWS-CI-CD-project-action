@@ -23,10 +23,10 @@
             ],
             
             "essential": true,
-            "secrets": [
+            "environment": [
                 {
                     "name": "MemcachedEndpoint",
-                    "valueFrom": "arn:aws:ssm:us-east-1:127214174680:parameter/MemcachedEndpoint"
+                    "value": "vprofile-cache.6sccoa.cfg.use1.cache.amazonaws.com:11211"
                 }
 
 
