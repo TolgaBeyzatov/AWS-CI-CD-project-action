@@ -1,18 +1,6 @@
 package com.amazon.elasticache;
-package com.visualpathit.account.utils;
 
 import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.SocketAddress;
-import java.util.concurrent.Future;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import com.visualpathit.account.beans.Components;
-import com.visualpathit.account.model.User;
-
-import net.spy.memcached.MemcachedClient;
 
 public class AutoDiscoveryDemo {
 
@@ -31,6 +19,20 @@ public class AutoDiscoveryDemo {
         client.set("theKey", 3600, "This is the data value");
     }
 }
+package com.visualpathit.account.utils;
+
+import java.net.InetSocketAddress;
+import java.net.SocketAddress;
+import java.util.concurrent.Future;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.visualpathit.account.beans.Components;
+import com.visualpathit.account.model.User;
+
+import net.spy.memcached.MemcachedClient;
+
 
 @Service
 public class MemcachedUtils {
