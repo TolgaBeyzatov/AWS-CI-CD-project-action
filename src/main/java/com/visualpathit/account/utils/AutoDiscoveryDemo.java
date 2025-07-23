@@ -1,6 +1,11 @@
 package com.amazon.elasticache;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
+
+// Import the &AWS;-provided library with Auto Discovery support 
+import net.spy.memcached.MemcachedClient;  
+
 
 public class AutoDiscoveryDemo {
 
