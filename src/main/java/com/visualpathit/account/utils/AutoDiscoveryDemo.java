@@ -11,7 +11,7 @@ public class AutoDiscoveryDemo {
 
     public static void main(String[] args) throws IOException {
             
-        String configEndpoint = System.getenv("MemcachedEndpoint");
+        String configEndpoint = "vprofile-cache.6sccoa.cfg.use1.cache.amazonaws.com"; //System.getenv("MemcachedEndpoint");
         Integer clusterPort = 11211;
 
         MemcachedClient client = new MemcachedClient(
