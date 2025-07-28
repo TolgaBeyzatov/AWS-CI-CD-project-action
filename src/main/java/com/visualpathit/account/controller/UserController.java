@@ -88,39 +88,39 @@ public class UserController {
         return "userList";
     }
     
-    // @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
-    // public String getOneUser(@PathVariable(value="id") String id,Model model)
-    // {	
-    // 	String Result ="";
-    // 	try{
-    // 		if( id != null && MemcachedUtils.memcachedGetData(id)!= null){    			
-    // 			User userData =  MemcachedUtils.memcachedGetData(id);
-    // 			Result ="Data is From Cache";
-    // 			System.out.println("--------------------------------------------");
-    // 			System.out.println("Data is From Cache !!");
-    // 			System.out.println("--------------------------------------------");
-    // 			System.out.println("Father ::: "+userData.getFatherName());
-    // 			model.addAttribute("user", userData);
-    // 			model.addAttribute("Result", Result);
-    // 		}
-    // 		else{
-	//     		User user = userService.findById(Long.parseLong(id)); 
-	//     		Result = MemcachedUtils.memcachedSetData(user,id);
-	//     		if(Result == null ){
-	//     			Result ="Memcached Connection Failure !!";
-	//     		}
-	//     		System.out.println("--------------------------------------------");
-    // 			System.out.println("Data is From Database");
-    // 			System.out.println("--------------------------------------------");
-	// 	        System.out.println("Result ::: "+ Result);	       
-	// 	        model.addAttribute("user", user);
-	// 	        model.addAttribute("Result", Result);
-    // 		}
-    // 	} catch (Exception e) {    		
-    // 		System.out.println( e.getMessage() );
-	// 	}
-    //     return "user";
-    // }
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    public String getOneUser(@PathVariable(value="id") String id,Model model)
+    {	
+    	String Result ="";
+    	try{
+    		if( id != null && MemcachedUtils.memcachedGetData(id)!= null){    			
+    			User userData =  MemcachedUtils.memcachedGetData(id);
+    			Result ="Data is From Cache";
+    			System.out.println("--------------------------------------------");
+    			System.out.println("Data is From Cache !!");
+    			System.out.println("--------------------------------------------");
+    			System.out.println("Father ::: "+userData.getFatherName());
+    			model.addAttribute("user", userData);
+    			model.addAttribute("Result", Result);
+    		}
+    		else{
+	    		User user = userService.findById(Long.parseLong(id)); 
+	    		Result = MemcachedUtils.memcachedSetData(user,id);
+	    		if(Result == null ){
+	    			Result ="Memcached Connection Failure !!";
+	    		}
+	    		System.out.println("--------------------------------------------");
+    			System.out.println("Data is From Database");
+    			System.out.println("--------------------------------------------");
+		        System.out.println("Result ::: "+ Result);	       
+		        model.addAttribute("user", user);
+		        model.addAttribute("Result", Result);
+    		}
+    	} catch (Exception e) {    		
+    		System.out.println( e.getMessage() );
+		}
+        return "user";
+    }
     
     /** {@inheritDoc} */
     @RequestMapping(value = { "/user/{username}"} , method = RequestMethod.GET)
