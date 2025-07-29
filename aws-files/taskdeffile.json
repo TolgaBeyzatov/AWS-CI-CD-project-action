@@ -26,7 +26,7 @@
             "environment": [
                 {
                     "name": "MemcachedEndpoint",
-                    "value": "vprofile-cache.6sccoa.cfg.use1.cache.amazonaws.com:11211"
+                    "value": "vprofile-cache.6sccoa.cfg.use1.cache.amazonaws.com"
                 }
 
 
