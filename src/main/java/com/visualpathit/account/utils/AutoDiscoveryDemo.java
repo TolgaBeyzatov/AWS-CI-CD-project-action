@@ -1,4 +1,4 @@
-package com.amazon.elasticache;
+package com.visualpathit.account.utils;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -24,3 +24,5 @@ public class AutoDiscoveryDemo {
         client.set("theKey", 3600, "This is the data value");
     }
 }
+
+
