@@ -4,17 +4,13 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 import java.util.concurrent.Future;
 
-import org.springframework.cloud.aws.cache.config.annotation.EnableElastiCache; //org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.visualpathit.account.beans.Components;
 import com.visualpathit.account.model.User;
 
 import net.spy.memcached.MemcachedClient;
-
-@EnableElastiCache({@CacheClusterConfig(name = "firstCache")})
-public class ApplicationConfiguration {
-}
 @Service
 public class MemcachedUtils {
 	
