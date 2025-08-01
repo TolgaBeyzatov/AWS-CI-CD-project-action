@@ -101,7 +101,9 @@
                         <div class="media-body">
                             <hr>
                             <h3><strong>Description</strong></h3>
-                            <p>I am a DevOps enthusiast and this is my project. Overall, this project represents my ability to build an application using an open-source web server Apache Tomcat and CI/CD tools such as Github Actions workflows for both automating the Infrastructure as code with Terraform, integrated in a separate Git repository with two branches for dev and prod. The other Workflow is for the application itself, it consists of three jobs, the first job builds and tests the artifacts before they are deployed, the second job is for Build and Push the image in ECR and the last job is for deploying the new task definition in the ECS Cluster.</p>
+                            <p>This is my DevOps project, implemented as a Blog web application to represent my ability to build and automate an entire CI/CD process.
+The dynamic web server used is open-source web server Apache Tomcat. The tools and services used for building it are:
+Terraform, GitHub, GitHub Actions, SonarQube Cloud, Docker, Maven, AWS services such as ECS, ECR, EC2, S3, API Gateway, Parameter Store, IAM, VPC, ALB, VPC Link, RDS MySQL, Elasticache Memcached, RabbitMQ.</p>
                             <hr>
                             <h3><strong>Location</strong></h3>
                             <p>Bulgaria</p>

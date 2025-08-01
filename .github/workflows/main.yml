@@ -1,5 +1,9 @@
 name: Cvproject Actions # Project Name
 on: [push, workflow_dispatch]
+  push:
+    branches:
+      - main
+      - dev
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: actapp           
@@ -50,15 +54,16 @@ jobs:
            -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/
 
     # Check the Quality Gate status.
-      # - name: SonarQube Quality Gate check
-      #   id: sonarqube-quality-gate-check
-      #   uses: sonarsource/sonarqube-quality-gate-action@master
-      #   # Force to fail step after specific time.
-      #   with:
-      #     pollingTimeoutSec: 600
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #   # SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
+      - name: SonarQube Quality Gate check ## Will be applied only if the branch name is main and there is a push event.
+        id: sonarqube-quality-gate-check
+        if: github.ref == 'refs/heads/main' github.event_name == 'push'
+        uses: sonarsource/sonarqube-quality-gate-action@master
+        # Force to fail step after specific time.
+        with:
+          pollingTimeoutSec: 600
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        # SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
 
   BUILD_AND_PUBLISH:
     needs: Testing
