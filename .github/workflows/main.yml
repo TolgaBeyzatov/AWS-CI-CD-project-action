@@ -1,5 +1,5 @@
 name: Cvproject Actions # Project Name
-on: [push, workflow_dispatch]
+on: 
   push:
     branches:
       - main
