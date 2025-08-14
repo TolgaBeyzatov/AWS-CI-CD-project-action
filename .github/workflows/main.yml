@@ -20,7 +20,8 @@ jobs:
   Testing:
     runs-on: ubuntu-latest
     steps:
-      - name: Code checkout
+      # Checks-out if the code repository can be accessed by the workflow
+      - name: Code checkout 
         uses: actions/checkout@v4
 
       - name: Maven test
@@ -29,7 +30,7 @@ jobs:
       - name: Checkstyle
         run: mvn checkstyle:checkstyle
 
-      # Setup java 11 to be default (sonar-scanner requirement as of 5.x)
+      # SonarScanner requires a miminum version 17
       - name: Set Java 21
         uses: actions/setup-java@v3
         with:
@@ -65,7 +66,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         # SONAR_HOST_URL: ${{ secrets.SONAR_URL }} #OPTIONAL   
 
-  BUILD_AND_PUBLISH:
+  BUILD_AND_PUBLISH: 
     needs: Testing
     runs-on: ubuntu-latest
     steps:
@@ -79,6 +80,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+    # The following 3 steps are getting the Endpoint values from AWS Parameter Store which are applied during IAC.
       - name: 'Get value from Parameter Store'
         id: parameter
         uses: poad/get-aws-ssm-parameter@v3.0.0
@@ -103,7 +105,7 @@ jobs:
           aws-region: us-east-1
           decryption: false 
       
-      - name: Update application.properties file
+      - name: Update application.properties file  #This step finds and replaces the endpoints.
         run: |
           sed -i "s/^jdbc.username.*$/jdbc.username\=${{ secrets.RDS_USER }}/" src/main/resources/application.properties
           sed -i "s/^jdbc.password.*$/jdbc.password\=${{ secrets.RDS_PASS }}/" src/main/resources/application.properties
@@ -120,7 +122,7 @@ jobs:
          registry: ${{ secrets.REGISTRY }}
          repo: actapp
          region: ${{ env.AWS_REGION }}
-         tags: latest,${{ github.run_number }}
+         tags: latest,${{ github.run_number }} #tags the image with run number of the workflow
          daemon_off: false
          dockerfile: ./Dockerfile
          context: ./
